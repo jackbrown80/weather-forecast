@@ -45,23 +45,20 @@ function showWeather(obj) {
   forecastTitle.innerHTML = `${obj.city.name}, ${obj.city.country}`;
 
   obj.list.forEach((timestamp) => {
-    timestampDate = convertToDate(timestamp.dt).substring(0, 5);
-    timestampMonth = convertToDate(timestamp.dt).substring(3, 5);
+    timestampDate = timestamp.dt_txt;
+    timestampDate= timestampDate.substring(5,10);
     timestampHour = convertToDate(timestamp.dt).substring(12, 14);
     if (timestampDate === dates[count] && timestampHour === "13") {
-      updateWeather(timestamp, count, timestampDate, timestampMonth);
+      updateWeather(timestamp, count, timestampDate);
       count++;
-    }
-    if (timestampDate === dates[count] && timestampHour === "16") {
-      updateWeather(timestamp, count, timestampDate, timestampMonth);
+    } else if (timestampDate === dates[count] && timestampHour === "16") {
+      updateWeather(timestamp, count, timestampDate);
       count++;
-    }
-    if (timestampDate === dates[count] && timestampHour === "19") {
-      updateWeather(timestamp, count, timestampDate, timestampMonth);
+    } else if (timestampDate === dates[count] && timestampHour === "19") {
+      updateWeather(timestamp, count, timestampDate);
       count++;
-    }
-    if (timestampDate === dates[count] && timestampHour === "22") {
-      updateWeather(timestamp, count, timestampDate, timestampMonth);
+    } else if (timestampDate === dates[count] && timestampHour === "22") {
+      updateWeather(timestamp, count, timestampDate);
       count++;
     }
   });
@@ -223,7 +220,7 @@ function createStringDate(date) {
   if (dateDay < 10) {
     dateDay = `0${dateDay}`;
   }
-  return `${dateDay}/${dateMonth}`;
+  return `${dateMonth}-${dateDay}`;
 }
 
 searchButton.addEventListener("click", checkSearchCriteria);
