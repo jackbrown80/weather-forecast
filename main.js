@@ -45,31 +45,34 @@ function showWeather(obj) {
   forecastTitle.innerHTML = `${obj.city.name}, ${obj.city.country}`;
 
   obj.list.forEach((timestamp) => {
-    timestampDate = timestamp.dt_txt;
-    timestampDate= timestampDate.substring(5,10);
-    timestampHour = convertToDate(timestamp.dt).substring(12, 14);
-    if (timestampDate === dates[count] && timestampHour === "13") {
-      updateWeather(timestamp, count, timestampDate);
+    let timestampDate = timestamp.dt_txt;
+    let timestampDayMonth = timestampDate.substring(5,10);
+    let timestampHour = timestampDate.substring(11,13);
+    console.log(timestampHour);
+    
+
+    if (timestampDayMonth === dates[count] && timestampHour === "12") {
+      updateWeather(timestamp, count, timestampDayMonth);
       count++;
-    } else if (timestampDate === dates[count] && timestampHour === "16") {
-      updateWeather(timestamp, count, timestampDate);
+    } else if (timestampDayMonth === dates[count] && timestampHour === "15") {
+      updateWeather(timestamp, count, timestampDayMonth);
       count++;
-    } else if (timestampDate === dates[count] && timestampHour === "19") {
-      updateWeather(timestamp, count, timestampDate);
+    } else if (timestampDayMonth === dates[count] && timestampHour === "18") {
+      updateWeather(timestamp, count, timestampDayMonth);
       count++;
-    } else if (timestampDate === dates[count] && timestampHour === "22") {
-      updateWeather(timestamp, count, timestampDate);
+    } else if (timestampDayMonth === dates[count] && timestampHour === "21") {
+      updateWeather(timestamp, count, timestampDayMonth);
       count++;
     }
   });
   cardsWrapper.classList.remove("hidden");
 }
 
-function updateWeather(forecast, count, timestampDate, timestampMonth) {
+function updateWeather(forecast, count, timestampDayMonth) {
   const temp = Math.round(forecast.main.temp - 273.15);
   UpdateTemperatures(temp, count);
 
-  UpdateDates(timestampDate, count);
+  UpdateDates(timestampDayMonth, count);
 
   const detailedDescription = forecast.weather[0].description;
   UpdateDescriptions(titleCase(detailedDescription), count);
