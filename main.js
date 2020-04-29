@@ -18,7 +18,7 @@ function checkSearchCriteria() {
     }
     forecastTitle.innerHTML = "Please type something";
   } else {
-    const WEATHER_URL = `http://api.openweathermap.org/data/2.5/forecast?q=${searchBar.value}&appid=296c38156a2fbd4b42f1e264cfff6ad5`;
+    const WEATHER_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${searchBar.value}&appid=296c38156a2fbd4b42f1e264cfff6ad5`;
     const promise = fetch(WEATHER_URL);
 
     promise
