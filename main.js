@@ -46,6 +46,8 @@ function showWeather(obj) {
 
   obj.list.forEach((timestamp) => {
     let timestampDate = timestamp.dt_txt;
+    console.log(timestampDate);
+    
 
     let timestampDayMonth = timestampDate.substring(5, 10);
     let timestampHour = timestampDate.substring(11, 13);
@@ -83,6 +85,8 @@ function showWeather(obj) {
 }
 
 function updateWeather(forecast, count, timestampDayMonth) {
+  console.log(forecast);
+  
   const temp = Math.round(forecast.main.temp - 273.15);
   UpdateTemperatures(temp, count);
 
@@ -126,10 +130,13 @@ function UpdateTemperatures(temp, count) {
 
 function UpdateDates(timestampDate, count) {
   dateFields.forEach((field) => {
-    if (count === 0){
+    if (field.dataset.key === '0'){
       field.innerHTML = 'Today';
+    } else if (field.dataset.key === '1') {
+      field.innerHTML = 'Tomorrow';
     } else if (field.dataset.key === String(count)) {
-      field.innerHTML = `${timestampDate}`;
+      timestampDate.substring(0,2)
+      field.innerHTML = `${timestampDate.substring(3,5)}/${timestampDate.substring(0,2)}`;
     }
   });
 }
