@@ -124,7 +124,6 @@ body {
   justify-content: center;
   padding: 10px 10px;
   min-height: 100px;
-  margin-bottom: 10px;
 }
 
 .temp {
@@ -219,6 +218,7 @@ body {
     justify-content: space-evenly;
     padding: 0 15px;
     height: fit-content;
+    margin-bottom: 10px;
   }
 
   .temp {
