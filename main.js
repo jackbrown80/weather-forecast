@@ -67,18 +67,6 @@ function showWeather(obj) {
     } else if (timestampDayMonth === dates[count] && timestampHour === "21") {
       updateWeather(timestamp, count, timestampDayMonth);
       count++;
-    } else if (timestampDayMonth === dates[count] && timestampHour === "09") {
-      updateWeather(timestamp, count, timestampDayMonth);
-      count++;
-    } else if (timestampDayMonth === dates[count] && timestampHour === "06") {
-      updateWeather(timestamp, count, timestampDayMonth);
-      count++;
-    } else if (timestampDayMonth === dates[count] && timestampHour === "03") {
-      updateWeather(timestamp, count, timestampDayMonth);
-      count++;
-    } else if (timestampDayMonth === dates[count] && timestampHour === "00") {
-      updateWeather(timestamp, count, timestampDayMonth);
-      count++;
     }
   });
   cardsWrapper.classList.remove("hidden");
