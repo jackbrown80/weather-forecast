@@ -46,12 +46,14 @@ function showWeather(obj) {
 
   obj.list.forEach((timestamp) => {
     let timestampDate = timestamp.dt_txt;
-    console.log(timestampDate);
-    
-    let timestampDayMonth = timestampDate.substring(5,10);
-    let timestampHour = timestampDate.substring(11,13);
 
-    if (timestampDayMonth === dates[count] && timestampHour === "12") {
+    let timestampDayMonth = timestampDate.substring(5, 10);
+    let timestampHour = timestampDate.substring(11, 13);
+
+    if (count === 0 && timestampHour === '00') {
+      updateWeather(timestamp, count, 'Tomorrow');
+      count += 2;
+    } else if (timestampDayMonth === dates[count] && timestampHour === "12") {
       updateWeather(timestamp, count, timestampDayMonth);
       count++;
     } else if (timestampDayMonth === dates[count] && timestampHour === "15") {
@@ -61,6 +63,18 @@ function showWeather(obj) {
       updateWeather(timestamp, count, timestampDayMonth);
       count++;
     } else if (timestampDayMonth === dates[count] && timestampHour === "21") {
+      updateWeather(timestamp, count, timestampDayMonth);
+      count++;
+    } else if (timestampDayMonth === dates[count] && timestampHour === "09") {
+      updateWeather(timestamp, count, timestampDayMonth);
+      count++;
+    } else if (timestampDayMonth === dates[count] && timestampHour === "06") {
+      updateWeather(timestamp, count, timestampDayMonth);
+      count++;
+    } else if (timestampDayMonth === dates[count] && timestampHour === "03") {
+      updateWeather(timestamp, count, timestampDayMonth);
+      count++;
+    } else if (timestampDayMonth === dates[count] && timestampHour === "00") {
       updateWeather(timestamp, count, timestampDayMonth);
       count++;
     }
@@ -112,7 +126,9 @@ function UpdateTemperatures(temp, count) {
 
 function UpdateDates(timestampDate, count) {
   dateFields.forEach((field) => {
-    if (field.dataset.key === String(count)) {
+    if (count === 0){
+      field.innerHTML = 'Today';
+    } else if (field.dataset.key === String(count)) {
       field.innerHTML = `${timestampDate}`;
     }
   });
@@ -227,11 +243,10 @@ function createStringDate(date) {
 }
 
 function handlekeypress(e) {
-  if (e.key === 'Enter'){
+  if (e.key === "Enter") {
     checkSearchCriteria();
   }
 }
 
 searchButton.addEventListener("click", checkSearchCriteria);
 searchBar.addEventListener("keypress", handlekeypress);
-
