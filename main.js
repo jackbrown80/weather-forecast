@@ -48,8 +48,6 @@ function showWeather(obj) {
     let timestampDate = timestamp.dt_txt;
     let timestampDayMonth = timestampDate.substring(5,10);
     let timestampHour = timestampDate.substring(11,13);
-    console.log(timestampHour);
-    
 
     if (timestampDayMonth === dates[count] && timestampHour === "12") {
       updateWeather(timestamp, count, timestampDayMonth);
@@ -226,4 +224,12 @@ function createStringDate(date) {
   return `${dateMonth}-${dateDay}`;
 }
 
+function handlekeypress(e) {
+  if (e.key === 'Enter'){
+    checkSearchCriteria();
+  }
+}
+
 searchButton.addEventListener("click", checkSearchCriteria);
+searchBar.addEventListener("keypress", handlekeypress);
+
