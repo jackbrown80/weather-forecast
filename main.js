@@ -46,6 +46,8 @@ function showWeather(obj) {
 
   obj.list.forEach((timestamp) => {
     let timestampDate = timestamp.dt_txt;
+    console.log(timestampDate);
+    
     let timestampDayMonth = timestampDate.substring(5,10);
     let timestampHour = timestampDate.substring(11,13);
 
